@@ -7,9 +7,9 @@ export default async function ServicePage({
 }) {
     const { slug } = await params;
 
-    const service = allServices
-        .flatMap((group) => group.items)
-        .find((item) => item.slug === slug);
+    const service = allServices.find(
+        (item) => item.slug === slug
+    );
 
     if (!service) {
         return <div style={{ padding: 80 }}>Service not found</div>;
@@ -21,9 +21,18 @@ export default async function ServicePage({
                 <h1>{service.title}</h1>
 
                 <p style={{ marginTop: 16 }}>
-                    Detailed information about{" "}
-                    <strong>{service.title}</strong> will go here.
+                    {service.problem}
                 </p>
+
+                <p style={{ marginTop: 16 }}>
+                    {service.solution}
+                </p>
+
+                <ul style={{ marginTop: 24 }}>
+                    {service.businessValue.map((value, i) => (
+                        <li key={i}>{value}</li>
+                    ))}
+                </ul>
             </div>
         </main>
     );
