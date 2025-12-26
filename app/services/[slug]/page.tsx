@@ -1,10 +1,14 @@
-import { services } from "@/data/services";
+import services from "@/data/services";
 
-export default function ServiceDetail({
-  params,
-}: {
-  params: { slug: string };
-}) {
+
+type PageProps = {
+    params: {
+        slug: string;
+    };
+};
+
+export default function ServicePage({ params }: PageProps) {
+
   const service = services
     .flatMap((group) => group.items)
     .find((item) => item.slug === params.slug);
