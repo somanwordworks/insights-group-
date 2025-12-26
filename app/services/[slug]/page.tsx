@@ -1,4 +1,6 @@
-import services from "@/data/services";
+
+
+import { services } from "@/data/services";
 
 export default async function ServicePage({
     params,
