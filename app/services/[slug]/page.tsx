@@ -1,13 +1,15 @@
-import { services } from "@/data/services";
+import services from "@/data/services";
 
 export default async function ServicePage({
     params,
 }: {
-    params: { slug: string };
+    params: Promise<{ slug: string }>;
 }) {
+    const { slug } = await params;
+
     const service = services
         .flatMap((group) => group.items)
-        .find((item) => item.slug === params.slug);
+        .find((item) => item.slug === slug);
 
     if (!service) {
         return <div style={{ padding: 80 }}>Service not found</div>;
