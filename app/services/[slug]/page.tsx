@@ -1,6 +1,4 @@
-
-
-import { services } from "@/data/services";
+import { allServices } from "@/data/services";
 
 export default async function ServicePage({
     params,
@@ -9,7 +7,7 @@ export default async function ServicePage({
 }) {
     const { slug } = await params;
 
-    const service = services
+    const service = allServices
         .flatMap((group) => group.items)
         .find((item) => item.slug === slug);
 
