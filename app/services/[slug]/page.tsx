@@ -1,12 +1,10 @@
 import { services } from "@/data/services";
 
-type PageProps = {
-    params: {
-        slug: string;
-    };
-};
-
-export default function ServicePage({ params }: PageProps) {
+export default async function ServicePage({
+    params,
+}: {
+    params: { slug: string };
+}) {
     const service = services
         .flatMap((group) => group.items)
         .find((item) => item.slug === params.slug);
@@ -21,7 +19,8 @@ export default function ServicePage({ params }: PageProps) {
                 <h1>{service.title}</h1>
 
                 <p style={{ marginTop: 16 }}>
-                    Detailed information about <strong>{service.title}</strong> will go here.
+                    Detailed information about{" "}
+                    <strong>{service.title}</strong> will go here.
                 </p>
             </div>
         </main>
